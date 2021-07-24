@@ -39,6 +39,7 @@ def http_echo():
     message["origin"] = request.origin
     message["url_root"] = request.url_root
     message["url_charset"] = request.url_charset
+    message["environment"] = request.environ
  
     response = make_response(dumps(message, sort_keys=True, indent=4))
     response.headers['Content-Type'] = 'application/json; charset=utf-8'
