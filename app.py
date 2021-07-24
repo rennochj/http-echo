@@ -32,8 +32,6 @@ def http_echo():
         if type(value) is str or type(value) is tuple or type(value) is int or type(value) is list or type(value) is dict:
             environment[key] = value
 
-    print(environment)
-
     message["path"] = request.path
     message["full_path"] = request.full_path
     message["remote_addr"] = request.remote_addr
