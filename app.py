@@ -3,8 +3,13 @@ from flask import request
 from flask import make_response
 from json import dumps
 from time import sleep
+from aws_xray_sdk.ext.flask.middleware import XRayMiddleware
+from aws_xray_sdk.core import xray_recorder
 
 app = Flask(__name__)
+
+xray_recorder.configure(service='htt-echo')
+XRayMiddleware(app, xray_recorder)
 
 @app.route('/wait', methods=['GET'])
 def wait_http_echo():
