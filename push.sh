@@ -1,3 +1,5 @@
 git add -A && git commit -m "adding x-ray"
-docker push connerjh/http-echo
 git push https://github.com/connerjh/http-echo.git
+
+docker build -t connerjh/http-echo .
+docker push connerjh/http-echo
