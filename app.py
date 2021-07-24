@@ -47,7 +47,11 @@ def http_echo():
     message["url_root"] = request.url_root
     message["url_charset"] = request.url_charset
     message["environment"] = environment
-    message["host_ip"] = os.environ["HOST_IP"]
+
+    if "HOST_IP" in os.environ:
+        message["host_ip"] = os.environ["HOST_IP"]
+    else:
+        message["host_ip"] = ""
  
     response = make_response(dumps(message, sort_keys=True, indent=4))
     response.headers['Content-Type'] = 'application/json; charset=utf-8'
